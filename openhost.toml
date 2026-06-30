@@ -1,0 +1,24 @@
+[app]
+name = "speedtest"
+version = "0.1.0"
+description = "Self-hosted internet speed test (download / upload / ping / jitter) between your browser and this OpenHost server, powered by LibreSpeed."
+
+[runtime.container]
+image = "Dockerfile"
+port = 8989
+
+[routing]
+# No public_paths: the test endpoints stay behind OpenHost auth, so only the
+# logged-in compute-space owner can run a test. This keeps the bandwidth-heavy
+# /garbage and /empty endpoints from being abused by anonymous traffic.
+health_check = "/"
+
+# The speed test pushes/pulls large chunks of data and runs several parallel
+# streams, so give it real CPU and enough memory to buffer them.
+[resources]
+memory_mb = 256
+cpu_cores = 1.0
+
+[data]
+# Stateless: results are shown live in the browser and nothing is persisted.
+app_data = false

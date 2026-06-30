@@ -1,0 +1,27 @@
+# LibreSpeed (speedtest-go) configuration for OpenHost.
+# See https://github.com/librespeed/speedtest-go for the full reference.
+
+# Bind to all interfaces so the OpenHost router can reach the container.
+bind_address=""
+# Must match runtime.container.port in openhost.toml.
+listen_port=8989
+# proxy protocol disabled; the OpenHost router proxies plain HTTP to us.
+proxyprotocol_port=0
+
+# Server location (only used for the multi-server distance display, which we
+# don't use in this single-server setup).
+server_lat=1
+server_lng=1
+
+# No ipinfo.io key: ISP lookup is skipped, no external API calls are made.
+ipinfo_api_key=""
+
+# database_type="none" -> fully stateless. No telemetry/results are recorded
+# and no result-share PNG is generated; up/down/ping/jitter all still work and
+# are shown live in the browser. This keeps the app stateless (app_data = false).
+database_type="none"
+
+# TLS/HTTP2 are terminated upstream by the OpenHost router + Caddy, so the app
+# itself just speaks plain HTTP.
+enable_tls=false
+enable_http2=false
