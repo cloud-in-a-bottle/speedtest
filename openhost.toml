@@ -16,8 +16,8 @@ health_check = "/"
 # The speed test pushes/pulls large chunks of data and runs several parallel
 # streams, so give it real CPU and enough memory to buffer them.
 [resources]
-memory_mb = 256
-cpu_cores = 1.0
+memory_mb = 512
+cpu_cores = 4.0
 
 [data]
 # Stateless: results are shown live in the browser and nothing is persisted.
