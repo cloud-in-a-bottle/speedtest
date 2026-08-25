@@ -17,6 +17,7 @@ health_check = "/"
 # streams, so give it real CPU and enough memory to buffer them.
 [resources]
 memory_mb = 512
+build_memory_mb = 2048
 cpu_cores = 4.0
 
 [data]
